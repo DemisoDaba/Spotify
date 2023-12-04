@@ -51,4 +51,4 @@ ClarityBlog is a simple and elegant blog website built with HTML, CSS, JavaScrip
 
 ## License
 
-This project is licensed under the [MIT License](link to license file).
+This project is licensed under the MIT License.
