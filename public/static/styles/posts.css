@@ -1,0 +1,16 @@
+section.container div.recent {
+    margin-top: 30px;
+    font-size: 35px;
+}
+
+body {
+    background-color: #e0e9f3;
+}
+
+section div.content {
+    margin: -15px 0px -15px 0px;
+}
+
+section div.card {
+    padding: 10px;
+}

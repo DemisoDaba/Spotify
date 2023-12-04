@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/images/—Pngtree—letter b logo_6059128.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Kdam+Thmor+Pro&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <title>Write</title>
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" href="../static/styles/editor.css">
+    <script src="../static/scripts/script.js"></script>
+    <title>Create Blog</title>
+</head>
+
+<body>
+    <div class="logo">
+        <nav>
+            <a href="/"><img src="../static/images/—Pngtree—letter b logo_6059128.png" alt="logo" width="60px"></a>
+            <ul>
+                <li><a href="/" class="home">Home</a></li>
+            </ul>
+        </nav>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category == "error" %}
+        <div id="error-flash" class="Error_flash hidden" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" onclick="closeFlash('error-flash')">&times;</button>
+        </div>
+        {% else %}
+        <div id="success-flash" class="Success_flash hidden" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" onclick="closeFlash('success-flash')">&times;</button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <form method="POST" enctype="multipart/form-data">
+        <!-- <div class="banner">
+            <input type="file" accept="image/*" id="banner-upload" name="banner" hidden>
+            <label for="banner-upload" class="banner-upload-btn"><img src="../static/images/upload banner.png"
+                    alt="upload banner" width="20px" onclick="ChangeImage('banner-upload')"></label>
+        </div> -->
+        <div class="test">
+            <div><textarea type="text" name="title" class="title" placeholder="Blog Title ..."></textarea></div>
+            <div><textarea type="text" name="article" class="article" placeholder="Start Writing ..."></textarea></div>
+            <br><br><br><br><br>
+            <div class="options">
+                <button class="publish-btn">Publish</button>
+                <!-- <input type="file" accept="image/*" id="image-upload" hidden>
+                <label for="image-upload" class="upload-btn">
+                    <p>Upload Image</p>
+                </label> -->
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

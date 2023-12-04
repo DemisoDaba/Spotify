@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/images/—Pngtree—letter b logo_6059128.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Kdam+Thmor+Pro&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <title>Blog: {{ post.title }}</title>
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" href="../static/styles/editor.css">
+    <link rel="stylesheet" href="../static/styles/blog.css">
+    <script src="../static/scripts/script.js"></script>
+</head>
+
+<body>
+    <div class="logo">
+        <nav>
+            <a href="/"><img src="../static/images/—Pngtree—letter b logo_6059128.png" alt="logo" width="60px"></a>
+            <ul>
+                <li><a href="/" class="home">Home</a></li>
+                <li><a href="/post" class="about">Editor</a></li>
+            </ul>
+        </nav>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        {% if category == "error" %}
+        <div id="error-flash" class="Error_flash hidden" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" onclick="closeFlash('error-flash')">&times;</button>
+        </div>
+        {% else %}
+        <div id="success-flash" class="Success_flash hidden" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" onclick="closeFlash('success-flash')">&times;</button>
+        </div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <!-- <div class="banner">
+    </div> -->
+    <div class="test">
+        <h1 class="title">{{ post.title }}</h1>
+        <div class="article">
+            {{ post.article }}
+        </div>
+    </div>
+    <br><br>
+    <form method='POST' action="/create-comment/{{ post.id }}">
+        <div class="comments">
+            <input type="text" id="kkk" name="text" class="comment-body">
+            <label for="kkk"><button class="comment-btn">Comment</button></label>
+        </div>
+        <br>
+        <div class="Comments-container">
+            {% for comment in post.comments|sort(attribute='created_at', reverse=True) %}
+            <div>
+                <div class="Author"><b>{{ comment.user.username }}</b></div>
+                <div class="cmnt">{{ comment.text }}</div>
+                <div class="date">{{ comment.created_at }}</div>
+                {% if current_user.id == comment.author or current_user.id == comment.post.author %}
+                <div><a href="/delete-comment/{{comment.id}}" class="button"><strong>Delete</strong></a></div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </form>
+    <br><br>
+</body>
+
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/signup.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="../static/images/—Pngtree—letter b logo_6059128.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Kdam+Thmor+Pro&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <script src="../static/scripts/script.js"></script>
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <header>
+        <div id="header">
+            <div class="logo">
+                <nav>
+                    <a href="/"><img src="../static/images/—Pngtree—letter b logo_6059128.png" alt="logo"
+                            width="60px"></a>
+                    <ul>
+                        <li><a href="/" class="home">Home</a></li>
+                    </ul>
+                </nav>
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                {% if category == "error" %}
+                <div id="error-flash" class="Error_flash hidden" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" onclick="closeFlash('error-flash')">&times;</button>
+                </div>
+                {% else %}
+                <div id="success-flash" class="Success_flash hidden" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" onclick="closeFlash('success-flash')">&times;</button>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </header>
+    <div class="container">
+        <form method="POST">
+            <h1>Sign Up</h1>
+            <div class="box">
+                <input type="text" name="email" placeholder="Email" required>
+                <i class='bx bxl-gmail'></i>
+            </div>
+            <div class="box">
+                <input type="text" name="username" placeholder="Username" required>
+                <i class='bx bxs-user'></i>
+            </div>
+            <div class="box">
+                <input type="password" name="password1" placeholder="Enter Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <div class="box">
+                <input type="password" name="password2" placeholder="Repeat Password" required>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+            <button type="submit" class="btn">Sing Up</button>
+            <div class="user">
+                <p>Already have an account? <a href="/login"><strong>Sign in</strong></a></p>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>

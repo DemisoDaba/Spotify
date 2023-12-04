@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="shortcut icon" href="../static/images/—Pngtree—letter b logo_6059128.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Kdam+Thmor+Pro&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <script src="../static/scripts/script.js"></script>
+    <title>Your Platform for Expressive Writing</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <div class="logo">
+                <nav>
+                    <a href="/"><img src="../static/images/—Pngtree—letter b logo_6059128.png" alt="logo"
+                            width="60px"></a>
+                    <ul>
+                        <li><a href="/" class="home">Home</a></li>
+                        <li><a href="/post" class="about">Write</a></li>
+                        {% if user.is_authenticated %}
+                        <li><a href="/logout" class="logout">Logout</a></li>
+                        {% else %}
+                        <li><a href="/login" class="login">Login</a></li>
+                        <li><a href="/signup" class="start">Get Started</a></li>
+                        {% endif %}
+                    </ul>
+                </nav>
+                {% with messages = get_flashed_messages(with_categories=True) %}
+                {% if messages %}
+                {% for category, message in messages %}
+                {% if category == "error" %}
+                <div id="error-flash" class="Error_flash hidden" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" onclick="closeFlash('error-flash')">&times;</button>
+                </div>
+                {% else %}
+                <div id="success-flash" class="Success_flash hidden" role="alert">
+                    {{ message }}
+                    <button type="button" class="btn-close" onclick="closeFlash('success-flash')">&times;</button>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endif %}
+                {% endwith %}
+            </div>
+            <hr class="hr1">
+        </div>
+    </header>
+    <div class="mini-header">
+        <h2 class="title">Embrace the art of curiosity.</h2>
+        {% if not user.is_authenticated %}
+        <img src="../static/images/peeps-avatar-alpha.png" alt="" width="250" class="sapiens">
+        {% else %}
+        <img src="../static/images/peeps-avatar-alpha (2).png" alt="" width="250" class="sapiens1">
+        {% endif %}
+        <h3 class="intro">Dive into a world of endless stories,diverse thinking.<br>Here, curiosity is not just
+            encouraged,
+            it's celebrated.<br>Join us on a journey of discovery across a myriad of topics,<br>where every article is
+            an
+            invitation to expand your mind and ignite your imagination.</h3>
+        {% if not user.is_authenticated %}
+        <p class="p1"><a href="/signup">Start Reading</a></p>
+        {% endif %}
+        <hr class="hr2">
+    </div>
+    <section class="container">
+        <div class="recent">
+            <h3>Recent Blogs</h3>
+        </div>
+        <div class="section">
+            {% for post in posts %}
+            <div class="card">
+                <!-- <div class="image-section img-one"></div> -->
+                <div class="content">
+                    <h3>
+                        From <a href="/posts/{{post.user.username}}" class="posts">{{ post.user.username }}</a><br> At
+                        {{ post.created_at }}
+                    </h3>
+                    <h2>
+                        {{ post.title }}
+                    </h2>
+                    <p>
+                        {{ post.article }}
+                    </p>
+                    <a href="/blog/{{post.id}}" class="button"><strong>Read More</strong></a>
+                    {% if user.id == post.author %}
+                    <a href="/delete/{{post.id}}" class="button"><strong>Delete</strong></a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    <!-- <aside class="recent-posts-aside">
+        <h3>Explore More</h3>
+        <div class="tag-cloud">
+            <h4>Popular Tags</h4>
+            <ul>
+                <li><a href="#">Technology</a></li>
+                <li><a href="#">Travel</a></li>
+                <li><a href="#">Science</a></li>
+                <li><a href="#">Inspiration</a></li>
+                <li><a href="#">Food</a></li>
+            </ul>
+        </div>
+        <div class="social-media-links">
+            <h4>Connect with Us</h4>
+            <ul>
+                <li><a href="#" target="_blank">Facebook</a></li>
+                <li><a href="#" target="_blank">Twitter</a></li>
+                <li><a href="#" target="_blank">Instagram</a></li>
+                <li><a href="#" target="_blank">LinkedIn</a></li>
+            </ul>
+        </div>
+        <div class="newsletter-subscription">
+            <h4>Subscribe to Our Newsletter</h4>
+            <form action="#" method="post">
+                <input type="email" name="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </aside> -->
+</body>
+
+</html>

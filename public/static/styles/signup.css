@@ -1,0 +1,226 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+
+header {
+    background-color: transparent;
+    position: fixed;
+    width: 100%;
+    margin-bottom: 560px;
+}
+
+.logo {
+    padding: 10px 3%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav ul li {
+    display: inline-block;
+    margin: 10px 10px;
+}
+
+nav ul li a {
+    color: #242424;
+    text-decoration: none;
+    font-size: 15px;
+    padding: 10px;
+    font-family: 'Robot', sans-serif;
+}
+
+nav ul li a:hover {
+    background-image: linear-gradient(to bottom right, #f1e8ca, #e8daad);
+    border-radius: 50px;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* background-image: url(../images/joanna-kosinska-1_CMoFsPfso-unsplash.jpg); */
+    background: #f1e8ca;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.container {
+    padding: 30px 50px;
+    border: 2px solid rgba(255, 255, 255, .2);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+}
+
+.container h1 {
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 30px;
+    font-size: 30px;
+}
+
+.container .box {
+    position: relative;
+    margin: 10px 0px 20px 0px;
+    width: 100%;
+    cursor: text;
+}
+
+.container .box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.container .btn {
+    cursor: pointer;
+}
+
+.container .box input {
+    padding-left: 20px;
+    padding-inline-end: 50px;
+}
+
+.container .box input::placeholder {
+    font-weight: 100;
+    color: black;
+}
+
+.container .box input,
+.container .btn {
+    outline: none;
+    border: solid #333 1px;
+    width: 100%;
+    height: 45px;
+    background-color: transparent;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 100;
+}
+
+.container .btn {
+    font-weight: 600;
+}
+
+.container .btn:hover {
+    background-color: #e8daad;
+}
+
+.container .user {
+    margin-top: 20px;
+}
+
+.container .user p {
+    text-align: center;
+}
+
+.container .user a {
+    text-decoration: none;
+    color: black;
+}
+
+.container .not-user a:hover {
+    text-decoration: underline;
+}
+
+.Success_flash,
+.Error_flash {
+    color: #FFF;
+    text-align: center;
+    padding: 15px;
+    border-radius: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -635%);
+    z-index: 1000;
+}
+
+.Success_flash {
+    background-color: #81C784;
+}
+
+.Error_flash {
+    background-color: #FF8A80;
+}
+
+.btn-close {
+    color: #FFF;
+    background-color: transparent;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+    position: absolute;
+    top: -2px;
+    right: 5px;
+}
+
+/* for phone */
+@media (max-width: 480px) {
+    .container {
+        padding: 10px 10px;
+        width: 260px;
+        margin-top: 30px;
+    }
+
+    .container h1 {
+        margin: 5px 0px -15px 0px;
+        font-size: 25px;
+    }
+
+    .container .user p {
+        margin-top: -5px;
+        font-size: 12px;
+    }
+
+    .container .box input,
+    .container .btn {
+        font-size: 13px;
+        height: 40px;
+    }
+
+    .Success_flash,
+    .Error_flash {
+        transform: translate(-50%, -360%);
+    }
+}
+
+/* for tablette */
+@media (min-width: 481px) and (max-width: 1024px) {
+    .container {
+        padding: 10px 10px;
+        width: 300px;
+        margin-top: 30px;
+    }
+
+    .container h1 {
+        margin: 5px 0px -15px 0px;
+        font-size: 25px;
+    }
+
+    .container .user p {
+        margin-top: -5px;
+        font-size: 12px;
+    }
+
+    .container .box input,
+    .container .btn {
+        font-size: 13px;
+        height: 40px;
+    }
+}
+
+/* for desktop */
+@media (min-width: 1025px) {
+    body {
+        background-image: url(../images/joanna-kosinska-1_CMoFsPfso-unsplash.jpg);
+    }
+}

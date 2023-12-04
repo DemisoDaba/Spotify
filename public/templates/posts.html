@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../static/images/—Pngtree—letter b logo_6059128.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dosis:wght@300&family=Kdam+Thmor+Pro&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2&display=swap" rel="stylesheet">
+    <title>{{ username }} Posts's</title>
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <link rel="stylesheet" href="../static/styles/editor.css">
+    <link rel="stylesheet" href="../static/styles/posts.css">
+</head>
+
+<body>
+    <div class="logo">
+        <nav>
+            <a href="/"><img src="../static/images/—Pngtree—letter b logo_6059128.png" alt="logo" width="60px"></a>
+            <ul>
+                <li><a href="/" class="home">Home</a></li>
+            </ul>
+        </nav>
+    </div>
+    <section class="container">
+        </div>
+        <div class="recent">
+            <h3>{{ username }}'s Blogs</h3>
+        </div>
+        <div class="section">
+            {% for post in posts %}
+            <div class="card">
+                <div class="image-section img-one"></div>
+                <div class="content">
+                    <h2>
+                        {{ post.title }}
+                    </h2>
+                    <p>
+                        {{ post.article }}
+                    </p>
+                    <a href="/blog/{{post.id}}" class="button"><strong>Read More</strong></a>
+                    {% if user.id == post.author %}
+                    <a href="/delete/{{post.id}}" class="button"><strong>Delete</strong></a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+
+</html>

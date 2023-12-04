@@ -1,0 +1,100 @@
+.article {
+    height: auto;
+    margin-top: 30px;
+}
+
+.comments,
+.Comments-container div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.comments .comment-body {
+    border: solid;
+    width: 70%;
+    height: 40px;
+    background-color: transparent;
+    padding: 10px;
+    /* margin-left: 170px; */
+    border-radius: 20px;
+}
+
+.comments .comment-btn {
+    height: 38px;
+    width: 80px;
+    border-radius: 20px;
+    margin-left: 8px;
+    cursor: pointer;
+    border: solid black;
+    background-color: rgb(73, 73, 160);
+    color: white;
+}
+
+.comments .comment-btn:hover {
+    background-color: rgb(31, 31, 126);
+}
+
+.Comments-container {
+    height: auto;
+    border: solid 1px #C2DEDC;
+    /* width: 100%; */
+    /* margin-left: 70px; */
+    max-height: 400px;
+    border-radius: 20px;
+}
+
+.Comments-container div {
+    font-size: 12px;
+    white-space: pre-line;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    font-family: 'poppins', sans-serif;
+}
+
+.Comments-container div.cmnt {
+    word-break: break-all;
+}
+
+/*.Comments-container div.date {
+    padding-left: 10px;
+}*/
+
+.Comments-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.Comments-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.Comments-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.Comments-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    cursor: pointer;
+}
+
+.Comments-container div a {
+    color: #116A7B;
+    text-decoration: none;
+}
+
+.Comments-container div a:hover {
+    color: #0f4049;
+}
+
+/* for phone */
+@media (max-width: 480px) {
+}
+
+/* for tablette */
+@media (min-width: 481px) and (max-width: 1024px) {
+}
+
+/* for desktop */
+@media (min-width: 1025px) {}
